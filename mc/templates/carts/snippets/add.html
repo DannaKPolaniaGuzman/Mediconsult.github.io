@@ -1,0 +1,34 @@
+{% load static %}
+<form action="{% url 'agregar' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="medicine_id" value="{{ medicine.id }}">
+    <div class="">
+        <button type="button" class="btn btn-info d-inline" id="remove"> - </button>
+        <input type="number" value="1" class="form-control col-sm-1 d-inline" id="quantity" name="quantity" readonly>
+        <button type="button" class="btn btn-info" id="add"> + </button>
+    </div>
+    <div class="mt-2">
+        <button type="submit" class="btn btn-warning"> Agregar al carrito </button>
+        <!-- <input type="submit" value="Insertar" class="btn btn-warning"> -->
+    </div>
+</form>
+
+<script>
+
+const add = document.getElementById('add')
+const remove = document.getElementById('remove')
+const quantity = document.getElementById('quantity')
+
+add.addEventListener('click', function(){
+    quantity.value = parseInt(quantity.value) + 1
+})
+
+remove.addEventListener('click', function(){
+    value = parseInt(quantity.value)
+
+    if (value != 1) {
+        value = value - 1
+    }
+    quantity.value = value
+})
+</script>

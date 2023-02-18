@@ -1,0 +1,378 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Icono MediConsult -->
+    <link rel="shortcut icon" href="{% static 'images/gt_favicon.png' %}">
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- ICONOS FONT AWESOME-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- CSS only BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <title>MediConsult</title>
+
+</head>
+
+<body class="">
+    <!-- Inicio de la pagina -->
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <!-- [ Pre-loader ] End -->
+    <!-- [ navigation menu ] start -->
+
+    <nav class="pcoded-navbar">
+        <div class="navbar-wrapper">
+            <div class="navbar-content scroll-div">
+
+                <div class="">
+                    <div class="main-menu-header">
+                        <img class="img-radius" src="{% static 'images/avatar-paciente.png'  %}" alt="User">
+                        <div class="user-details">
+                            <span>Usuario</span>
+                            <div id="more-details">Paciente<i class="fa fa-chevron-down m-l-5"></i></div>
+                        </div>
+                    </div>
+                    <div class="collapse" id="nav-user-link">
+                        <ul class="list-unstyled">
+                            <!--Se inserta el perfil de usuario PENDIENTE ICONO-->
+                            <li class="list-group-item "><a href="{% url 'perfilpaciente'  %}">
+                                    <i class="fas fa-user-check"></i> Perfil Paciente </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <ul class="nav pcoded-inner-navbar ">
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Inicio</label>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'indexpaciente'  %}" class="nav-link "><span class="pcoded-micon"><i
+                                    class="fas fa-play-circle"></i></span><span class="pcoded-mtext">Inicio
+                                Sistema</span></a>
+                    </li>
+
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Gestion de Citas</label>
+                    </li>
+
+                    <li class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link "><span class="pcoded-micon">
+                                <i class="fas fa-book-medical"></i></span>
+                            <span class="pcoded-mtext">Citas Usuario<i class="fa fa-chevron-down m-l-5"></i></span></a>
+                        <ul class="pcoded-submenu">
+                            <li><a href="{% url 'regiscitaspaciente'  %}"><i class="fas fa-edit"></i> Registrar
+                                    citas</a></li>
+                            <li><a href=" {% url 'consultcitaspaciente'  %} "><i class="fas fa-search"></i> Consultar
+                                    Citas</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Gestion de Historia Clinica</label>
+                    </li>
+                    <li class="nav-item ">
+                        <a href=" {% url 'consulthispaciente' %} " class="nav-link "><span class="pcoded-micon">
+                                <i class="fas fa-folder-plus"></i></span><span class="pcoded-mtext">Historia
+                                Clinica</span></a>
+
+                    </li>
+
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Gestion de Pagos</label>
+                    </li>
+
+                    <li class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link "><span class="pcoded-micon">
+                                <i class="fas fa-credit-card"></i></span>
+                            <span class="pcoded-mtext">Pago Servicios</span></a>
+                        <ul class="pcoded-submenu">
+                            <li><a href=" {% url 'regispagospaciente' %} ">
+                                    <i class="fas fa-shopping-cart"></i> Registrar Pagos</a></li>
+                            <li><a href=" {% url 'consultpagospaciente'  %} ">
+                                    <i class="fas fa-cash-register"></i> Consultar Pagos</a></li>
+                            
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <!-- [ navegacion en el menu ] final -->
+    <!-- [ Header ] inicio -->
+
+    <header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark">
+        <div class="m-header">
+            <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+            <a href="#!" class="b-brand">
+
+                <img src="{% static 'images/logo.png'  %}" alt="" height="60px">
+
+            </a>
+            <a href="#!" class="mob-toggler">
+                <i class="feather icon-more-vertical"></i>
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="#!" class="pop-search"><i class="fas fa-search"></i></a>
+                    <div class="search-bar">
+                        <input type="text" class="form-control border-0 shadow-none" placeholder="Search hear">
+                        <button type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                            <i class="fas fa-comment-alt"></i>
+                            <span class="badge badge-pill badge-danger">1</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right notification">
+                            <div class="noti-head">
+                                <h6 class="d-inline-block m-b-2">Notificaciones</h6>
+                                <div class="float-right">
+                                    <a href="#!" class="m-r-0">Marcar como leido</a>
+                                    <a href="#!">Limpiar todo</a>
+                                </div>
+                            </div>
+
+                            <ul class="noti-body">
+                                <li class="n-title">
+                                    <p class="m-b-2">Reciente</p>
+                                </li>
+                                <li class="notification">
+                                    <div class="media">
+                                        <img class="img-radius" src=" {% static 'images/avatar-paciente.jpg'  %} "
+                                            alt="">
+                                        <div class="media-body">
+                                            <p><strong>Sin Notificaciones</strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="noti-footer">
+                                <a href="#!">Mostrar todo</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="dropdown drp-user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fas fa-user-cog"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-notification">
+                            <div class="pro-head">
+                                <img src="{% static 'images/avatar-paciente.png'  %}" class="img-radius"
+                                    alt="User-Profile-Image">
+                                <span>Danna Polania</span>
+                                <a href="{% url 'login'  %}" class="dud-logout" title="SALIR">
+                                    <i class="fas fa-power-off"></i>
+                                </a>
+                            </div>
+
+                            <ul class="pro-body">
+                                <li><a href="{% url 'perfilpaciente'  %}" class="dropdown-item"><i
+                                            class="fas fa-user-check"></i>
+                                        perfil</a></li>
+                                <li><a href="{% url 'login'  %}" class="dropdown-item"><i
+                                            class="fas fa-sign-out-alt"></i>
+                                        Bloquear pantalla</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!--INICIO MODULO CORRESPONDIENTE-->
+
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
+
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10"> Registro Citas</h5>
+                            </div>
+
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'indexpaciente'  %}">
+                                        <i class="fas fa-home"></i>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item"><a href="#R_C"><i class="fas fa-edit"></i>Registre su
+                                        cita</a></li>
+                            </ul>
+                            <br><br>
+                            <h3 style="text-align: center;">Bienvenido a su sistema MediConsult / Registre la cita segun
+                                sus dias habiles</h3>
+                            <h5 class="mt-5">Formulario de Citas</h5>
+                            <hr>
+                            <form class="needs-validation" novalidate>
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom01">Nombres Completos</label>
+                                        <input type="text" class="form-control" id="validationCustom01"
+                                            placeholder="Ana Maria" required pattern="[A-Za-z\s]{3,40}"
+                                            title="Ingrese minimo 3 maximo 40 caracteres">
+                                        <div class="valid-feedback"> Es valido! </div>
+                                        <div class="invalid-feedback"> Ingrese minimo 3 maximo 40 caracteres" </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom02">Apellidos Completos</label>
+                                        <input type="text" class="form-control" id="validationCustom02"
+                                            placeholder="Sarmiento Reyes" required pattern="[A-Za-z\s]{3,40}"
+                                            title="Ingrese minimo 3 maximo 40 caracteres">
+                                        <div class="valid-feedback">
+                                            Es valido!
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustomDate">Fecha Cita</label>
+                                        <div class="input-group">
+
+                                            <input type="date" class="form-control" id="validationCustomDate" required>
+                                            <div class="invalid-feedback">Porfavor ingrese una fecha disponible </div>
+                                            <div class="valid-feedback"> Fecha Valida </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustomTime">Hora Cita</label>
+                                        <div class="input-group">
+
+                                            <input type="time" class="form-control" id="validationCustomTime" required>
+                                            <div class="invalid-feedback">Porfavor ingrese una Hora disponible </div>
+                                            <div class="valid-feedback"> Hora Valida </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationtype">Tipo de Cita</label>
+                                        <select class="form-control" id="validationtype" required>
+                                            <option value="" selected>Seleccione...</option>
+                                            <option> Ortopedia </option>
+                                            <option> Odontologia </option>
+                                            <option> Medicina General </option>
+                                            <option> Neurocirugia </option>
+                                            <div class="invalid-feedback">Porfavor elija un tipo de cita</div>
+                                            <div class="valid-feedback">Es valido</div>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustomstate">Estado Cita</label>
+                                        <select class="form-control" id="validationCustomstate" required>
+                                            <option value="" selected>Seleccione...</option>
+                                            <option> Registrada </option>
+                                            <option> En proceso </option>
+                                            <option> Cancelada </option>
+                                            <option> Reagendada </option>
+                                            <div class="invalid-feedback">Porfavor elija el estado de la cita </div>
+                                            <div class="valid-feedback"> Estado en lista </div>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck"
+                                            required>
+                                        <label class="form-check-label" for="invalidCheck">acepto el tratado de los
+                                            datos</label>
+                                        <div class="invalid-feedback"> Acepte los terminos de datos.
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-outline-primary" id="botonagendar"
+                                    onclick="validacion()">Agendar Cita</button>
+                            </form>
+                            <script>
+
+                                function validacion() {
+                                    Swal.fire(
+                                        'Cita Agendada',
+                                        'Correctamente',
+                                        'success'
+                                    )
+                                }
+
+                            </script>
+                            <script>
+                                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                                (function () {
+                                    'use strict';
+                                    window.addEventListener('load', function () {
+                                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                        var forms = document.getElementsByClassName('needs-validation');
+                                        // Loop over them and prevent submission
+                                        var validation = Array.prototype.filter.call(forms, function (form) {
+                                            form.addEventListener('submit', function (event) {
+                                                if (form.checkValidity() === false) {
+                                                    event.preventDefault();
+                                                    event.stopPropagation();
+                                                }
+                                                form.classList.add('was-validated');
+                                            }, false);
+                                        });
+                                    }, false);
+                                })();
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- fin del contenedor main -->
+        </div>
+    </div>
+
+
+    <script src="{% static 'js/vendor-all.min.js'  %}"></script>
+    <script src="{% static 'js/plugins/bootstrap.min.js'  %}"></script>
+    <script src="{% static 'js/pcoded.min.js'  %}"></script>
+    <script src="{% static 'js/plugins/apexcharts.min.js'  %}"></script>
+    <script src="{% static 'js/pages/dashboard-main.js'  %}"></script>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,290 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Icono MediConsult -->
+    <link rel="shortcut icon" href="{% static 'images/gt_favicon.png' %}">
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <!-- ICONOS FONT AWESOME-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <title>MediConsult</title>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top headroom">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <!--LineaCo-->
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+
+                <!--Logo mediConsult-->
+                <a class="navbar-brand" href="{% url 'index' %}">
+                    <img src="{% static 'images/logo.png' %}" alt="Logo MediConsult" height="80px" width="110px"
+                        style="margin-top: -13%;">
+                </a>
+            </div>
+
+
+            <div class="navbar-collapse collapse">
+                <ul class=" nav navbar-nav pull-right">
+                    <li class="activate"><a class="fa fa-home" href="{% url 'index' %}"> Inicio</a></li>
+                    <li><a href="#MI">Misión</a></li>
+                    <li><a href="#VI">Visión</a></li>
+                    <li><a href="#S_C">Servicios Clinicos</a></li>
+                    <li><a href="#P_F">Preguntas Frecuentes</a></li>
+
+                    <li class="dropdown">
+                        <a href="" class="fa fa-sign-in btn dropdown-toggle" data-toggle="dropdown"> Ingresar <b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'login'  %}">Usuario</a></li>
+                            <li><a href="{% url 'register'  %}">Registro de la Usuarios</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <header id="head">
+        <div class="container">
+            <div class="row">
+                <h1 class="lead"><strong>MediConsult Siempre al alcance</strong> </h1>
+                <p class="tagline">Revision Medica y Ortopedica </p>
+                <p><a class="btn btn-default btn-lg" role="button" href="#footer">CONTACTO</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container text-center">
+        <br> <br>
+        <h1><strong>Quienes Somos</strong></h1>
+        <p class="text-muted">
+            MediConsult es un consultorio enfocado en el cuidado de los pacientes tanto medicamente como de sus datos
+            personales, con el fin de tener una mejor comunicacion Consultorio-Paciente se realizo la creacion de este
+            sistema donde los pacientes podran desempeñar diferentes acciones como reservar sus propias citas
+            reagendarlas o cancelarlas con anterioridad, tambien cuenta con un historial clinico al que se le podra
+            hacer un seguimiento junto con los medicos que esten encargados de este.<br><br>
+
+            Adicional, manejamos actualmente dos tipos de pagos en efectivo y electronico ajustandonos a las comodidas
+            de nuestros pacientes
+        </p><br>
+    </div>
+
+    <div class="jumbotron ">
+        <div class="container">
+
+            <h2 id="S_C" class="text-center thin"><strong>Servicios MediConsult</strong></h2>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-3 highlight">
+                    <div class="h-caption">
+                        <h4><i class="fa fa-calendar fa-5"></i> Agendamiento de Citas </h4>
+                    </div>
+                    <div class="h-body text-center">
+                        <p>Cada paciente podra agendar, consultar, modificar y cancelar la cita en un tiempo determnado.
+                            Medicos y asistentes solo la consultara.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-3 highlight">
+                    <div class="h-caption">
+                        <h4><i class="fa fa-archive fa-5"></i>Historial Clinico</h4>
+                    </div>
+                    <div class="h-body text-center">
+                        <p>
+                            Los pacientes podran consultar su respectiva historia clinica y la asistente, pero en cuanto
+                            a los medicos podran hacer sus respectivas observaciones del paciente en cuanto a su salud.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-3 highlight">
+                    <div class="h-caption">
+                        <h4><i class="fa  fa-credit-card fa-5"></i>Servicios clinicos</h4>
+                    </div>
+                    <div class="h-body text-center">
+                        <p>Los servicios que abquieren los pacientes cada uno tendra un pago distinto. </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-3 highlight">
+                    <div class="h-caption">
+                        <h4><i class="fa fa-smile-o fa-5"></i>Medicacion Autorizada</h4>
+                    </div>
+                    <div class="h-body text-center">
+                        <p> MediConsult Cuenta con un menu de medicamentos que los usuarios pueden acceder a ellos según
+                            se halla informado en la cita.
+                            En el sistema se tendra un manejo respecto a las alergias del paciente para no medicarlo con
+                            algo que pueda dañarlo.<br>
+                            <strong>Estos medicamentos corren por cuenta del paciente</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <div class="container">
+
+        <h2 id="P_F" class="text-center top-space"><strong>Preguntas Frecuentes</strong> </h2>
+        <br>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h3><strong>¿Presentan algun otro metodo de pago diferente al efectivo?</strong> </h3>
+                <p>
+                    Si, ya que se implemento a la plataforma el nuevo metodo de pago electronico y se puedo con
+                    cualquier de cuenta.
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <h3><strong>¿Como se usa la plataforma MediConsult?</strong></h3>
+                <p>
+                    Segun el usuario y contraseña generados por el consultorio para cada usuario podra ingresar a su
+                    plataforma y podra entrar a realizar diferentes accciones en el sistema.
+                </p>
+            </div>
+            <div class="col-sm-12 ">
+                <h3 style="text-align: center;"><strong>Disfrute de todas las acciones que le da MediConsult</strong>
+                </h3>
+
+                <hr color="#000000">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+
+
+        <div class="row">
+            <div class="col-sm-6" id="VI">
+                <h3><strong>Vision</strong></h3>
+                <p>
+                    Convertirnos en una de los mejores centros médicos a nível nacional r internacional, para esto
+                    tenemos que seguir creciendo en conjuntó, brindando un mejor servicio a nuestros usuarios y así
+                    iremos creciendo poco a poco</p>
+            </div>
+            <div class="col-sm-6" id="MI">
+                <h3><strong>Mision</strong></h3>
+                <p>
+                    La mision de la pagina es prestar un buen servicio digital a los pacientes y facilitar la
+                    presencialidad para perdir su cita, hacer un chequeo y un historial clínico para llevar el proceso
+                    del paciente sin que se puedan estropiar los papeles del historial clínico, también manejamos pagos
+                    electrónicos</p>
+            </div>
+        </div>
+    </div>
+
+
+    <footer id="footer" class="top-space">
+
+        <div class="footer1">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-3 widget">
+                        <h3 class="widget-title">Contacto</h3>
+                        <div class="widget-body">
+                            <p>+57 302 309 5842<br>
+                                <a href="mailto:#">mediconsult12@gmail.com</a><br>
+                                <br>
+                                Colombia, Bogota DC
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 widget">
+                        <h3 class="widget-title">Redes Sociales</h3>
+                        <div class="widget-body">
+                            <p class="follow-me-icons">
+                                <a href="https://twitter.com"><i class="fa fa-twitter"></i></a>
+                                <a href="https://instagram.com/mediconsult_oficial?utm_medium=copy_link"><i
+                                        class="fa fa-instagram"></i></a>
+                                <a href="https://facebook.com"><i class="fa fa-facebook-official"></i></a>
+                                <a href="{% url 'contact'  %}"><i class="fa fa-envelope"></i></a>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer2">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-6 widget">
+                        <div class="widget-body">
+                            <p class="simplenav">
+                                <a href="#">Inicio</a> |
+                                <a href="#MI">Misión</a> |
+                                <a href="#VI">Visión</a> |
+                                <a href="#S_C">Servicios Clinicos</a> |
+                                <a href="#P_F">Preguntas Frecuentes</a> |
+                                <b><a href="{% url 'login'  %}">Ingresar </a>|</b>
+                                <b><a href="Registro.html">Registar </a></b>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 widget">
+                        <div class="widget-body">
+                            <p class="text-right">
+                                Copyright &copy; 2022, Danna, Angie.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!--SWEETALERT
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="text/javascript">
+
+        Swal.fire({
+            "title": "Enviado!",
+            "text": "Su mensaje fue enviado al administrador de mediconsult",
+            "icon": "success",
+            "confirmButtonText": 'OK'
+        })
+
+    </script>-->
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+    <script src="{% static 'js/headroom.min.js'  %}"></script>
+    <script src="{% static 'js/jQuery.headroom.min.js'  %}"></script>
+    <script src="{% static 'js/template.js'  %}"></script>
+</body>
+
+</html>

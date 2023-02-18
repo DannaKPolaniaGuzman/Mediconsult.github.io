@@ -1,0 +1,75 @@
+nav {
+
+    border: 1px solid #ccc;
+    background: #2980B9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right,#2980B9,  #6DD5FA );  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2980B9, #6DD5FA ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+  
+  #navbarNav .navbar-nav a{
+    padding: 1.2rem 2rem;
+    
+    
+  }
+  
+  @media (max-width: 991.98px) {
+    .nav-vertical {
+      border: 1px solid #2980B9;
+        right: 100%;
+        position: absolute;
+        width: 100%;
+        top: 57px;
+        transition: all .2s ease-out;
+       
+
+    }
+  
+    .active {
+      right: -1px;
+    }
+  }
+
+  .Introduccion{
+      font-size: 25px ;
+      text-align: justify;
+  }
+
+  .Mision{
+    font-size: 25px ;
+    text-align: justify;
+    border-right:dotted;
+}
+
+.Vision{
+  font-size: 25px ;
+  text-align: justify;
+  
+  
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+ 
+}
+
+i{
+  font-size: 45px;
+  margin-left: 45%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 #2980B9;
+}
+
+
+footer .contenedor{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 25px;
+	background: #B9BCC3;
+	color: #000000;
+	width: 100%;
+}

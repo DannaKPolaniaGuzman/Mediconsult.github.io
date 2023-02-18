@@ -1,0 +1,145 @@
+=========================================PROCEDIMIENTO 1======================================
+
+Este procedimiento almacenado cuenta la cantidad de citas que hay por dia y 
+nos devuelve: 
+- Si en el dia hay mas de 12 citas entonces el agendamiento de citas 'No hay disponibilidad'
+de lo contrario 'hay disponibilidad' de agenda dependiendo de la fecha y al haber disponibilidad la va a insertar.  
+
+DELIMITER $$
+CREATE PROCEDURE SP_diponibilidadCita 
+(IN Fecha DATE, IN Hora TIME, IN Tipo VARCHAR(30), IN Estado VARCHAR(20), IN IdPaciente INT, IN IdMedico INT)
+BEGIN
+DECLARE Num_cita INT;
+SET Num_cita = (SELECT COUNT(IdCita) FROM cita WHERE FechaCita = Fecha);
+CASE 
+WHEN (Num_cita > 12) THEN SELECT 'No hay disponibilidad';
+WHEN (Num_cita <= 12) THEN 
+SELECT 'Hay disponibilidad';
+INSERT INTO cita VALUES (null, Fecha, Hora, Tipo, Estado, IdPaciente, IdMedico);
+END CASE;
+END $$
+DELIMITER ;
+
+CALL SP_diponibilidadCita ('2022-06-22', '16:25:02', 'Consulta General', 'Registrada', 1019008927, 1019008915);
+
+DROP PROCEDURE SP_diponibilidadCita;
+========================================PROCEDIMIENTO 2======================================
+
+Se pedirá el ID del médico y se consultara cuantas citas tiene por mes, si supera las 10 citas se le dará un bono de 50 mil .
+
+DELIMITER $$
+create or replace procedure SP_bonoMedico(IN Idmedico INT, IN mes VARCHAR(2))
+BEGIN
+DECLARE NumCita INT DEFAULT 0;
+select COUNT(c.FechaCita) INTO NumCita from cita c
+inner join usuario u on c.idusuariomedico = u.idusuario
+inner join medico m on u.idusuario= m.idusuariomedico
+WHERE m.IdUsuarioMedico = Idmedico AND c.FechaCita LIKE concat('_____', mes,'___');
+CASE 
+When NumCita >= 10 THEN UPDATE medico set sueldo = (sueldo + 50000) WHERE IdUsuarioMedico = Idmedico limit 1;
+ELSE UPDATE medico set sueldo = (sueldo + 10000) WHERE IdUsuarioMedico = Idmedico limit 1;
+END CASE;
+select sueldo from medico WHERE idusuariomedico = Idmedico limit 1;
+END $$
+DELIMITER ;
+CALL  SP_bonoMedico('1019008917', 03);
+
+DROP PROCEDURE SP_diponibilidadCita;
+======================================PROCEDIMIENTO 3=========================================
+
+
+Este procedimiento va a mostrar los medicamentos disponibles 
+
+DELIMITER $$
+CREATE PROCEDURE SP_medicamentoDisponible (IN Medicamentoid VARCHAR(10))
+BEGIN
+select m.IdMedicamento, m.NombreMedicamento, m.Cantidad,
+case (m.Cantidad) 
+WHEN 0 THEN "No Hay"
+else "Si Hay" END as Disponibilidad 
+from medicamento m
+left join medicamento 
+on m.idmedicamento =  Medicamentoid
+group by  Medicamentoid ;
+END$$
+DELIMITER ;
+
+CALL  SP_medicamentoDisponible(101);
+
+DROP PROCEDURE SP_medicamentoDisponible;
+
+=================================TRIGGER ================================================
+Cada ves que se actualice las ordenes externas de Historia clinica el trigger detectara un cambio y actualizara la tabla historialHC
+
+DELIMITER $$
+CREATE TRIGGER cambiosOrdenes
+     AFTER UPDATE ON ordeneshistoria
+     FOR EACH ROW
+     BEGIN
+     IF old.OrdenesExternas <> new.OrdenesExternas THEN
+     INSERT INTO historialHC VALUES (user(), now(),old.IdHistoria,
+     old.OrdenesExternas, new.OrdenesExternas);
+     END IF;
+     END $$
+
+delimiter ;
+UPDATE ordeneshistoria SET OrdenesExternas = "NINGUNA" WHERE IdHistoria = 30;
+
+ select * from historialHC;
+
+DROP TRIGGER cambiosOrdenes;
+
+====================FUNCION Y ENCAPSULAMIENTO ===============================
+
+DELIMITER $$
+ CREATE FUNCTION SFencriptarClave (PasswordUsuario VARCHAR(45))
+    returns varbinary (100)
+    begin
+    declare encrip varbinary (100);
+    set encrip = aes_encrypt(PasswordUsuario,"DESCOMPRIMIR");
+    return encrip;
+    end$$
+
+delimiter ;
+
+DROP FUNCTION SFencriptarClave;
+
+INSERT INTO usuario VALUES(2589545,'Juan', 'roa', 'Cedula Ciudadania', 19, 'andres@gmail.com',SFencriptarClave('CLAVE140'),'CALLE 91',4 );
+
+select * from usuario where IdUsuario = 205585 ;
+
+===Desencriptar
+
+DELIMITER $$
+ CREATE FUNCTION desencriptarclave (PasswordUsuario varbinary(50))
+    returns varchar (40)
+    begin
+    declare desen varchar (45);
+    set desen = (select cast(aes_decrypt(PasswordUsuario, 'DESCOMPRIMIR' )as char(30) ) );
+    return desen;
+    end$$
+
+delimiter ;
+select IdUsuario, NombreUsuario, desencriptarclave(PasswordUsuario) from usuario where IdUsuario = 205585;
+
+DROP FUNCTION desencriptarclave;
+DROP FUNCTION SFencriptarClave;
+
+ALTER TABLE usuario MODIFY PasswordUsuario varbinary(100);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>MediConsult</title>
+		<!-- Icono MediConsult -->
+		<link rel="shortcut icon" href="{% static 'images/gt_favicon.png' %}">
+	
+	   <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+	   
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		
+		<!-- Iconos de  Fontawesome-->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+		<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+	
+		<!-- Css-->
+		<link rel="stylesheet" href="{% static 'css/login.css' %}">
+	
+	</head>
+	<body>
+		<div class="modal-dialog text-center">
+			<div class="col-sm-8 main-section">
+				<div class="modal-content">
+					<div class="col-12 user-img">
+						<img src="{% static 'images/logo.png' %}"/>
+					</div>                
+					<form class="col-12" method="post">
+						{% csrf_token %}
+						<div class="form-group" id="user-group">
+							<input type="text" class="form-control" placeholder="Nombre de usuario" name="username" required/>
+						</div>
+						<div class="form-group" id="contrasena-group">
+							<input type="password" class="form-control" placeholder="Contrasena" name="password"  required/>
+						</div>
+						<button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>
+					</form>
+					<div class="col-12 forgot">
+						<p class="mb-2 text-muted">¿Olvido su contraseña? <a href="{% url 'password_reset'  %}" class="f-w-400">Recuperar</a></p>
+						<p class="mb-0 text-muted">Es Administrador?<a href="{% url 'admin:index'  %}" class="f-w-400"> Login Administrador</a></p>
+						<br>
+						<p class="mb-0 text-muted">Quiere regresar?<a href="{% url 'index'  %}" class="f-w-400"> Pagina Principal</a></p>
+							<br>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+<!-- Administrador = admin@gmail.com clave: Admin12345. <link href="../View/Principal.html">
+     Medico = medico@gmail.com clave: Medico12345. <link href="../View/Principal.html">
+     Asistente = asistente@gmail.com clave: Secretaria12345. <link href="../View/Principal.html">
+     Paciente = user1@gmail.com clave:User12345. <link href="../View/Principal.html"> --> 
+
+	 <!--<script type="text/javascript">
+
+		var correo=document.getElementById("txtCorreo");
+		var password=document.getElementById("txtPassword");
+		
+ function validarRol(){
+		 if (correo.value=="admin@gmail.com" && password.value == "Admin12345.") {
+			alert("Bienvenido Administrador")
+			window.location = "../dist/Administrador/index_Administrador.html"
+		 }
+		 else if  (correo.value=="medico@gmail.com" && password.value=="Medico12345.") {
+			alert("Bienvenido Medico")
+			window.location = "../dist/Medico/index_medico.html"
+		 }
+		 else if (correo.value=="asistente@gmail.com" && password.value=="Secretaria12345.") {
+			alert("Bienvenido Asistente")
+			window.location = "../dist/Asistente/index_asistente.html"
+		 }
+		 else if (correo.value=="user1@gmail.com" && password.value=="User12345.") {
+			alert("Bienvenido Usuario")
+			window.location = "../templates/Paciente/indexpaciente.html"
+		  }
+		 else 
+		 {
+			 Swal.fire({
+		  icon: 'error',
+		  title: 'Algo esta mal...',
+		  text: 'Tu contraseña y/o usuario son incorrectos',
+		  footer: 'intentelo nuevamente y llene todos los campos'
+		})
+			 
+		 }
+		}
+</script>--> 
+
+<script src="{% static 'js/vendor-all.js'  %}"></script>
+<script src="{% static 'js/plugins/bootstrap.min.js'  %}"></script>
+<script src="{% static 'js/pcoded.min.js'  %}"></script>
+
+</body>
+
+</html>
+
